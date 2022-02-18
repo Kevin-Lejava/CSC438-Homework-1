@@ -8,6 +8,13 @@ import { ItemsPageRoutingModule } from './items-routing.module';
 
 import { ItemsPage } from './items.page';
 
+const routes = [
+  {
+  path: '',
+  component: ItemsPage
+  }
+];
+
 @NgModule({
   imports: [
     CommonModule,
