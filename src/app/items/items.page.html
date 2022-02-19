@@ -1,17 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>All the items on my store</ion-title>
+    <ion-title>Shopping Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-avatar slot = "start">
+    <ion-item *ngFor="let item of items" [routerLink]="['./' ,item.id]">
+      <ion-avatar slot="start">
         <ion-img [src]="item.imageUrl"></ion-img>
       </ion-avatar>
       <ion-label>
-        {{item.title}}
+        {{item.name}} x {{item.quantity}}
       </ion-label>
 
     </ion-item>

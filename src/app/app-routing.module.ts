@@ -9,7 +9,16 @@ const routes: Routes = [
   },
   {
     path: 'items',
-    loadChildren: () => import('./items/items.module').then(m => m.ItemsPageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./items/items.module').then(m => m.ItemsPageModule)
+      },
+      {
+        path: ':itemId',
+        loadChildren: () => import('./items/item-detail/item-detail.module').then(m => m.ItemDetailPageModule)
+      }
+    ]
   },
 ];
 

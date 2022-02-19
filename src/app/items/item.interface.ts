@@ -1,6 +1,7 @@
-export interface Item{
-    id: Number;
+export interface Item {
+    id: string;
     name: string;
     quantity: Number;
     imageUrl: string;
+    description: string;
 }
