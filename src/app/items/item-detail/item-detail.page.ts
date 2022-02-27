@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from '../items.service';
 import { Item } from '../item.interface';
+import { AlertController } from '@ionic/angular';
+import { CartPage } from 'src/app/items/cart/cart.page';
 
 @Component({
   selector: 'app-item-detail',
@@ -12,12 +14,12 @@ export class ItemDetailPage implements OnInit {
 
   loadedItem: Item;
 
-  constructor(private activatedRoute: ActivatedRoute, private itemService: ItemsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private itemService: ItemsService, private router: Router, private alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paraMap => {
       if (!paraMap.has('itemId')) {
-        //redirect
+        this.router.navigate([".items"]);
         return;
       }
       const itemId = paraMap.get('itemId');
@@ -25,7 +27,30 @@ export class ItemDetailPage implements OnInit {
     });
   }
 
+  // addToCart() {
+  //   this.cartPage.cartItems.push(this.loadedItem);
+  //   this.router.navigate([".cart"]);
+  // }
+
   onDeleteItem() {
+    this.alertCtrl.create({
+      header: 'Remove from cart?',
+      message: 'Once you delete this item it will not reappear.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+
+            this.itemService.deleteItem(this.loadedItem.id);
+            this.router.navigate(['/items']);
+          }
+        }
+      ]
+    })
     this.itemService.deleteItem(this.loadedItem.id);
   }
 

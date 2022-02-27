@@ -7,11 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: ItemsPage
-  },  {
+  },
+  {
     path: 'item-detail',
-    loadChildren: () => import('./item-detail/item-detail.module').then( m => m.ItemDetailPageModule)
+    loadChildren: () => import('./item-detail/item-detail.module').then(m => m.ItemDetailPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule)
   }
-
 ];
 
 @NgModule({

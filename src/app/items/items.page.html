@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Shopping Cart</ion-title>
+    <ion-title>Ionic Fruit Store</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="cartRedirect()">
+        <ion-label>Go to Cart</ion-label>
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +17,7 @@
         <ion-img [src]="item.imageUrl"></ion-img>
       </ion-avatar>
       <ion-label>
-        {{item.name}} x {{item.quantity}}
+        {{item.name}}
       </ion-label>
 
     </ion-item>

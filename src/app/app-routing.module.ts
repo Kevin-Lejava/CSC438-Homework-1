@@ -17,6 +17,14 @@ const routes: Routes = [
       {
         path: ':itemId',
         loadChildren: () => import('./items/item-detail/item-detail.module').then(m => m.ItemDetailPageModule)
+      },
+      {
+        path: 'cart',
+        loadChildren: () => import('./items/cart/cart.module').then(m => m.CartPageModule)
+      },
+      {
+        path: 'checkout',
+        loadChildren: () => import('./items/checkout/checkout.module').then(m => m.CheckoutPageModule)
       }
     ]
   },
