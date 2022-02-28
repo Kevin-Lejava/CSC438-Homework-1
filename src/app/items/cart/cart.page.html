@@ -11,5 +11,20 @@
 </ion-header>
 
 <ion-content>
-  <h1>hi</h1>
+<ion-list>
+    <ion-item *ngFor="let item of items" [routerLink]="['./' ,item.id]">
+      <ion-avatar slot="start">
+        <ion-img [src]="item.imageUrl"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        {{item.name}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-buttons>
+    <ion-button (click)="checkoutRedirect()">
+      <ion-label>Checkout</ion-label>
+      <ion-icon name="pricetags"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-content>
