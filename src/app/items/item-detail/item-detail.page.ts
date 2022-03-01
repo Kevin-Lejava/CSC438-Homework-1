@@ -32,26 +32,12 @@ export class ItemDetailPage implements OnInit {
   //   this.router.navigate([".cart"]);
   // }
 
-  onDeleteItem() {
-    this.alertCtrl.create({
-      header: 'Remove from cart?',
-      message: 'Once you delete this item it will not reappear.',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        },
-        {
-          text: 'Delete',
-          handler: () => {
-
-            this.itemService.deleteItem(this.loadedItem.id);
-            this.router.navigate(['/items']);
-          }
-        }
-      ]
-    })
-    this.itemService.deleteItem(this.loadedItem.id);
+  addToCart() {
+    this.activatedRoute.paramMap.subscribe(paraMap => {
+      this.router.navigate(["../items/cart"]);
+      return;
+    }
+    )
   }
 
 }
